@@ -1,4 +1,4 @@
-# Last updated: 04/09/2025, 16:35:25
+# Last updated: 04/09/2025, 16:35:44
 class Solution(object):
     def findMedianSortedArrays(self, nums1, nums2):
         l=[0]*(len(nums1)+len(nums2))
@@ -24,4 +24,4 @@ class Solution(object):
         if len(l)%2==0:
             return (float((l[(len(l)/2)] + l[((len(l)/2)-1)]))/2)
         else:
-            return (l[len(l)//2])
+            return float(l[len(l)//2])
