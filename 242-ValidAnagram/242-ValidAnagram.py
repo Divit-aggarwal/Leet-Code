@@ -1,4 +1,4 @@
-# Last updated: 05/09/2025, 00:30:18
+# Last updated: 05/09/2025, 00:30:25
 class Solution(object):
     def isAnagram(self, s, t):
         
