@@ -1,27 +1,11 @@
-// Last updated: 25/11/2025, 10:40:53
+// Last updated: 25/11/2025, 11:08:28
 class Solution {
 public:
-    int peakIndexInMountainArray(vector<int>& arr) {
-        int e = 0 ;
-        if(arr.size()<4){
-            return arr[1];
-        }
-        else{
-            int low = 0 ;
-            int high = arr.size() - 1 ;
-            int mid = (high + low )/2;
-            while(low<high){
-                mid = (high + low )/2;
-                if ( arr[mid] < arr[mid + 1]){
-                    low = mid + 1 ;
-                }
-                else if (arr[mid] > arr[mid + 1]){
-                    high = mid  ;
-                }
-            }
-            return low;
-
-        }
-       return e ; 
+    void rotate(vector<int>& nums, int k) {
+        int n = nums.size();
+        k %= n;
+        vector<int> last(nums.end() - k, nums.end());
+        nums.erase(nums.end() - k, nums.end());
+        nums.insert(nums.begin(), last.begin(), last.end());
     }
 };
