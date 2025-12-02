@@ -1,32 +1,10 @@
-// Last updated: 11/09/2025, 15:58:03
-#include<stack>
-using namespace std;
-#include<string>
-class Solution {
-public:
-    bool isValid(string s) {
-               stack<char> s1;
-        for (char ch : s) {
-            if (ch == '(' || ch == '[' || ch == '{') {
-                s1.push(ch);
-            } else {
-                if (s1.empty()) {
-                    return false;
-                }
-                char top = s1.top();
-                s1.pop();
-                if (ch == ')' && top != '(') {
-                    return false;
-                }
-                
-                if (ch == ']' && top != '['){
-                 return false;
-                }
-                if (ch == '}' && top != '{'){
-                     return false;
-                }
-            }
-        }
-        return s1.empty();
-    }
-};
+// Last updated: 02/12/2025, 16:02:07
+1class Solution {
+2public:
+3    string removeOccurrences(string s, string part) {
+4       while(s.length()>0 && s.find(part) < s.length() ){
+5            s.erase(s.find(part) , part.length());
+6       }
+7       return s;
+8    }
+9};
