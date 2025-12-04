@@ -1,27 +1,19 @@
-// Last updated: 04/12/2025, 14:05:43
+// Last updated: 04/12/2025, 14:10:07
 1class Solution {
 2public:
-3    bool searchMatrix(vector<vector<int>>& matrix, int target) {
-4        int sRow=0;
-5        int sCol = 0;
-6        int eRow = matrix.size() -1 ;
-7        int eCol = matrix[0].size()-1;
-8        if(target > matrix[eRow][eCol] || target < matrix[sRow][sCol]){
-9            return false;
-10        }
-11        int mid = matrix[sRow][eCol];
-12        while ( sRow <= eRow && sCol <= eCol){
-13            mid = matrix[sRow][eCol];
-14            if (target == mid){
-15                return true;
-16            }
-17            if(target > mid){
-18                sRow++;
-19            }
-20            else{
-21                eCol--;
-22            }
-23        }
-24        return false;
-25    }
-26};
+3    int countPrimes(int n) {
+4        vector<bool> prime(n+1, true);
+5        prime[0] = prime[1] = false;
+6        int count = 0;
+7
+8        for (int i = 2; i < n; i++) {
+9            if (prime[i]) {
+10                count++;
+11                for (int j = 2 * i; j < n; j += i) {
+12                    prime[j] = false;
+13                }
+14            }
+15        }
+16        return count;
+17    }
+18};
