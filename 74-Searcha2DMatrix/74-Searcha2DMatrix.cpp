@@ -1,19 +1,24 @@
-// Last updated: 04/12/2025, 14:16:20
+// Last updated: 04/12/2025, 15:09:45
 1class Solution {
 2public:
-3    int countPrimes(int n) {
-4        vector<bool> prime(n+1, true);
-5        prime[0] = prime[1] = false;
-6        int count = 0;
-7
-8        for (int i = 2; i < n; i++) {
-9            if (prime[i]) {
-10                count++;
-11                for (int j = 2 * i; j < n; j += i) {
-12                    prime[j] = false;
-13                }
-14            }
-15        }
-16        return count;
-17    }
-18};
+3    double myPow(double x, int n) {
+4        long long power = n;
+5        if (power < 0) {
+6            x = 1 / x;
+7            power = -power;
+8        }
+9
+10        double result = 1;
+11
+12        while (power) {
+13            if (power & 1)
+14                result *= x;
+15
+16            x *= x;
+17            power >>= 1;
+18        }
+19
+20        return result;
+21    }
+22};
+23
