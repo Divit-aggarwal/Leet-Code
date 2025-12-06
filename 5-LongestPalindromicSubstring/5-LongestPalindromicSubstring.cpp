@@ -1,40 +1,34 @@
-// Last updated: 01/12/2025, 21:18:58
+// Last updated: 06/12/2025, 20:57:06
 1class Solution {
 2public:
-3    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
-4        vector<int> f;
-5        int i = 0;
-6        int j = 0;
-7        while(m>0 && n >0){
-8            if (nums1[i] > nums2[j]){
-9                f.push_back(nums2[j]);
-10                j++;
-11                n--;
-12            }
-13            else if ( nums1[i] < nums2[j]){
-14                f.push_back(nums1[i]);
-15                i++;
-16                m--;
-17            }
-18            else{
-19                f.push_back(nums1[i]);
-20                f.push_back(nums2[j]);
-21                i++;
-22                j++;
-23                n--;
-24                m--;
-25            }
-26        }
-27        while (m>0){
-28            f.push_back(nums1[i]);
-29            i++;
-30            m--;
-31        }
-32            while (n>0){
-33            f.push_back(nums2[j]);
-34            j++;
-35            n--;
-36        }
-37        nums1 = f;
-38    }
-39};
+3    string longestPalindrome(string s) {
+4        if (s.empty()) {
+5            return "";
+6        }
+7
+8        int start = 0;
+9        int end = 0;
+10
+11        for (int i = 0; i < s.length(); i++) {
+12            int odd = expandAroundCenter(s, i, i);
+13            int even = expandAroundCenter(s, i, i + 1);
+14            int max_len = max(odd, even);
+15
+16            if (max_len > end - start) {
+17                start = i - (max_len - 1) / 2;
+18                end = i + max_len / 2;
+19            }
+20        }
+21
+22        return s.substr(start, end - start + 1);        
+23    }
+24
+25private:
+26    int expandAroundCenter(string s, int left, int right) {
+27        while (left >= 0 && right < s.length() && s[left] == s[right]) {
+28            left--;
+29            right++;
+30        }
+31        return right - left - 1;
+32    }    
+33};
