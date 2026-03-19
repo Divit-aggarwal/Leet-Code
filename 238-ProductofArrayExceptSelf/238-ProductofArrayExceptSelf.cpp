@@ -1,4 +1,4 @@
-// Last updated: 19/03/2026, 20:23:30
+// Last updated: 19/03/2026, 20:24:00
 1class Solution {
 2public:
 3    vector<int> productExceptSelf(vector<int>& nums) {
@@ -15,7 +15,7 @@
 14        for ( int i = n - 2; i >= 0; i-- ){
 15             post[i]= nums[i+1]*post[i+1];
 16        }
-17         for ( int i = 0; i < nums.size(); i++ ){
+17         for ( int i = 0; i < n; i++ ){
 18             res[i]= pre[i]*post[i];
 19
 20        }
